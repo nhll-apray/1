@@ -33,7 +33,7 @@ PB19000115 冯子烨 PB19000123 李云琪 PB19000124 李泽林
 **B2-1** 请说明你实现的活跃变量分析算法的设计思路。
 * 在 `map <BasicBlock*, std::set<Value*>> IN, OUT, USE, DEF` 中分别存储每个基本块的 IN, OUT, use, def 集合, 其中 use 集合不包含 phi 指令中所使用的变量.
 * 在 `std::map <BasicBlock*, std::map<BasicBlock*, std::set<Value*>>> PHI;` 中存储每个基本块的 phi 指令中一共会出现哪些基本块, 所对应使用的变量是哪些.
-* 用类似书算法9.2的循环迭代求解每个基本块的 IN 和 OUT, 修改 OUT 的公式为$\rm OUT[B] =\cup_{S是B的后继}       (use_S\cup PHI[B,S]\cup(OUT[S]-def_S))$, 修改 IN 的公式为 $\rm OUT[B] = use_B\cup PHI[B]\cup(OUT[B]-def_B))$. 其中 PHI[B,S] 指 B 的 phi 指令中跟在 S 后的变量集合, PHI[B] 指 B 的 phi 指令中使用的所有变量集合.
+* 用类似书算法9.2的循环迭代求解每个基本块的 IN 和 OUT, 修改 OUT 的公式为$\rm OUT[B] =\cup_{S是B的后继}\quad(use_S\cup PHI[B,S]\cup(OUT[S]-def_S))$, 修改 IN 的公式为 $\rm OUT[B] = use_B\cup PHI[B]\cup(OUT[B]-def_B))$. 其中 PHI[B,S] 指 B 的 phi 指令中跟在 S 后的变量集合, PHI[B] 指 B 的 phi 指令中使用的所有变量集合.
 
 
 ### Part3 支配树
